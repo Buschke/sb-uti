@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+
+sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /media/wsl -m /dev/sda
