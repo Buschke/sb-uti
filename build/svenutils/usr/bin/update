@@ -1,0 +1,81 @@
+#!/bin/zsh
+
+echo 'Updating system'
+echo '===============\n'
+parts=(ubuntu conda pip node)
+updatesequence_ubuntu=(update {,dist-}upgrade full-upgrade autoremove autoclean clean)
+updatesequence_conda=('conda' '--all')
+updatesequence_node=('-g')
+
+for part in $parts; do
+  case $part in
+  'ubuntu')
+    echo 'Updating Ubuntu\n'
+    for item in $updatesequence_ubuntu; do
+      echo '\n------------------------------\n'
+      echo '\nNext step: sudo apt '$item' --yes\n'
+      sudo apt $item --yes
+    done
+    ;;
+  'conda')
+    echo 'Updating conda:'
+    conda deactivate
+    for item in $updatesequence_conda; do
+      echo '\n------------------------------\n'
+      echo '\nNext step: conda '$item '\n'
+      conda update $item --yes
+    done
+    echo '\nUpdating py39'
+    echo '-------------\n'
+    conda activate py39
+    conda update --all --yes
+    conda deactivate
+    echo '\nUpdating svenAI'
+    echo '---------------\n'
+    conda activate svenAI
+    conda update --all --yes
+    conda deactivate
+    echo '\nCleaning up conda'
+    echo '-------------\n'
+    conda clean -a --yes
+    conda activate svenAI
+    ;;
+  'pip')
+    echo 'Updating pip:'
+    echo '\n------------------------------\n'
+    for env in $(workon); do
+      echo "\nUpdating environment ${env}:"
+      echo "----------------------------------"
+      echo "source ~venv/${env}/bin/activate'"
+      source ~venv/$env/bin/activate
+      pip install --upgrade pip
+      echo "pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
+      echo "pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
+      # pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U
+      # pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U
+      pip install -U $(pip freeze | awk '{split($0, a, "@"); print a[1]}')
+      pip cache purge
+      deactivate
+    done
+    source ~venv/svenAIvenv/bin/activate
+    ;;
+  'node')
+    echo 'Updating node:'
+    for item in $updatesequence_node; do
+      echo '\n------------------------------\n'
+      echo '\nNext step: '$item '\n'
+      pnpm add -g pnpm
+      pnpm update $item
+      echo '\n---------------------------\n'
+      # echo 'Checking for nvm lts updates'
+      # nvm ls-remote | grep 'Latest LTS: '
+      echo 'List installed node version:'
+      echo '----------------------------\n'
+      nvm ls
+    done
+    ;;
+  esac
+  echo '===========================\n'
+done
+
+echo 'Updating done.'
