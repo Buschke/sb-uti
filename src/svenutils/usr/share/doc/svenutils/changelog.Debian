@@ -1,0 +1,13 @@
+svenutils (1.0-2) stable; urgency=low
+
+  [ Buschke ]
+  * Completed first utils for createProjects, cleanProjectFolder
+
+ -- Sven Buschke <sven@buschke.com>  Fri,  30 Dec 2022 11:30:00 +0100
+
+svenutils (1.0-1) stable; urgency=low
+
+  [ Buschke ]
+  * First stubs for createProjects
+
+ -- Sven Buschke <sven@buschke.com>  Thu,  29 Dec 2022 11:00:00 +0100
