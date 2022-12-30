@@ -11,5 +11,7 @@ This shell script updates the sytem.
 ### mountWSL
 This command mounts the WSL system.
 
+### createProject
+
 ## Creating DEB package
-### 
+###

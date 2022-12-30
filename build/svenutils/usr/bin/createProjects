@@ -1,0 +1,151 @@
+#!/usr/bin/zsh
+
+if [ -z $1 ]
+then
+    npmenv='pnpm'
+elif [ $1 = 'yarn' ]
+then
+    npmenv='yarn'
+else
+    npmenv='pnpm'
+fi
+
+mkdir sb-rct
+mkdir sb-ang
+mkdir sb-vue
+mkdir sb-svk
+mkdir sb-flt
+mkdir sb-cpp
+code sb.code-workspace
+code sb-flt
+code sb-cpp
+code sb-uti
+
+echo 'Creating CPP project'
+echo '===================='
+pushd sb-cpp
+echo 'extern void lib1(void);' > mylib.h
+echo 'extern void lib2(void);' >> mylib.h
+touch mylib1.cpp
+touch mylib2.cpp
+echo '#include "mylib.h"' > main.cpp
+popd
+echo 'done'
+echo '----'
+
+echo ''
+echo 'Cloning sb-uti'
+echo '=============='
+gh repo clone Buschke/sb-uti &
+echo 'started in background mode'
+echo '--------------------------'
+
+echo ''
+echo 'Creating React project'
+echo '======================'
+if [ $npmenv = 'pnpm' ]
+then
+    pnpm create vite --template react-ts sb-rct
+    pushd sb-rct
+    pnpm install
+elif [ $npmenv = 'yarn' ]
+then
+    yarn create vite --template react-ts sb-rct
+    pushd sb-rct
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
+
+echo ''
+echo 'Creating Angular project'
+echo '========================'
+ng new --package-manager=yarn --strict --style=css --routing --skip-install sb-ang
+pushd sb-ang
+export NG_CLI_ANALYTICS="false"
+ng config cli.packageManager pnpm
+ng analytics enable
+pnpm install
+popd
+echo 'done'
+echo '----'
+
+echo ''
+echo 'Creating Vue project'
+echo '===================='
+if [ $npmenv = 'pnpm' ]
+then
+    pnpm create vite --template vue-ts sb-vue
+    pushd sb-vue
+    pnpm install
+elif $npmenv = 'yarn'
+then
+    yarn create vite --template vue-ts sb-vue
+    pushd sb-vue
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
+
+# echo 'Creating Svelte project'
+# echo '======================='
+# if [ $npmenv = 'pnpm' ]
+# then
+#     pnpm create vite --template vue-ts sb-svt
+#     pushd sb-svt
+#     pnpm install
+# elif $npmenv = 'yarn'
+# then
+#     yarn create vite --template svelte-ts sb-svt
+#     pushd sb-svt
+#     yarn set version berry
+#     yarn
+#     yarn dlx @yarnpkg/sdks vscode
+# fi
+# popd
+# echo 'done'
+# echo '----'
+
+echo ''
+echo 'Creating Flutter project'
+echo '========================'
+flutter create --description "Sven's new app" --org com.buschke -i swift -a kotlin -t app --platforms=android,ios,windows,linux,macos,web --project-name=sb_flt sb-flt
+echo 'done'
+echo '----'
+
+echo ''
+echo 'Creating Svelte Kit project'
+echo '==========================='
+if [ $npmenv = 'pnpm' ]
+then
+    pnpm create vite sb-svk
+    pushd sb-svk
+    pnpm install
+elif [ $npmenv = 'yarn' ]
+then
+    yarn create vite sb-svk
+    pushd sb-svk
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
+
+echo ''
+echo "Copying Sven's favicon.svg into project folders"
+echo '==============================================='
+# link: https://www.cyberciti.biz/faq/linux-unix-copy-a-file-to-multiple-directories-using-cp-command/
+# parallel cp -v /etc/resolv.conf ::: /tmp/1/ /tmp/2/ $HOME/3/
+# xargs -n 1 cp -v filename<<<"/dir1/ /dir2/ /dir3/"
+# echo "/dir1/ /dir2/ /dir3/" | xargs -n 1 cp -v filename
+# tee /tmp/1/resolv.conf /tmp/2/resolv.conf < /etc/resolv.conf tee /tmp/1/resolv.conf /tmp/2/resolv.conf < /etc/resolv.conf >/dev/null
+# find /dir1/ /dir2/ -maxdepth 0 -exec cp filename {} \;
+for dest in sb-rct/public/ sb-ang/src/assets/ sb-vue/public/ sb-svk/static/ ; do cp -v favicon.svg "$dest" ; done

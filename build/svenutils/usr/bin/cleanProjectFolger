@@ -1,0 +1,34 @@
+#!/usr/bin/zsh
+
+pushd ./1-Monday
+trash sb-*
+popd
+
+pushd ./2-Tuesday
+trash sb-*
+popd
+
+pushd ./3-Wednesday
+trash sb-*
+popd
+
+pushd ./4-Thursday
+trash sb-*
+popd
+
+pushd ./5-Friday
+trash sb-*
+popd
+
+pushd ./6-Saturday
+trash sb-*
+popd
+
+# pushd ./7-Sunday
+# trash sb-*
+# popd
+
+pushd ./1-Monday
+trash sb-*
+popd
+
