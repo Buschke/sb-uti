@@ -16,6 +16,8 @@ mkdir sb-vue
 mkdir sb-svk
 mkdir sb-flt
 mkdir sb-cpp
+mkdir sb-uti
+
 code sb.code-workspace
 code sb-flt
 code sb-cpp
@@ -36,7 +38,8 @@ echo '----'
 echo ''
 echo 'Cloning sb-uti'
 echo '=============='
-gh repo clone Buschke/sb-uti &
+gh repo clone Buschke/sb-uti
+
 echo 'started in background mode'
 echo '--------------------------'
 
@@ -149,3 +152,5 @@ echo '==============================================='
 # tee /tmp/1/resolv.conf /tmp/2/resolv.conf < /etc/resolv.conf tee /tmp/1/resolv.conf /tmp/2/resolv.conf < /etc/resolv.conf >/dev/null
 # find /dir1/ /dir2/ -maxdepth 0 -exec cp filename {} \;
 for dest in sb-rct/public/ sb-ang/src/assets/ sb-vue/public/ sb-svk/static/ ; do cp -v favicon.svg "$dest" ; done
+echo 'done'
+echo '----'
