@@ -78,57 +78,57 @@ echo 'done'
 echo '----'
 code sb-flt
 
-# echo 'Creating React project'
-# echo '======================'
-# if [ $npmenv = 'pnpm' ]
-# then
-#     pnpm create vite --template react-ts sb-rct
-#     pushd sb-rct
-#     pnpm install
-# elif [ $npmenv = 'yarn' ]
-# then
+echo 'Creating React project'
+echo '======================'
+if [ $npmenv = 'pnpm' ]
+then
+    # pnpm create vite --template react-ts sb-rct
+    pushd sb-rct
+    pnpm install
+elif [ $npmenv = 'yarn' ]
+then
 #     yarn create vite --template react-ts sb-rct
-#     pushd sb-rct
-#     yarn set version berry
-#     yarn
-#     yarn dlx @yarnpkg/sdks vscode
-# fi
-# popd
-# echo 'done'
-# echo '----'
+    pushd sb-rct
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
 
-# echo ''
-# echo 'Creating Angular project'
-# echo '========================'
+echo ''
+echo 'Creating Angular project'
+echo '========================'
 # ng new --package-manager=yarn --strict --style=css --routing --skip-install sb-ang
-# pushd sb-ang
-# export NG_CLI_ANALYTICS="false"
-# ng config cli.packageManager pnpm
-# ng analytics enable
-# pnpm install
-# popd
-# echo 'done'
-# echo '----'
+pushd sb-ang
+export NG_CLI_ANALYTICS="false"
+ng config cli.packageManager pnpm
+ng analytics enable
+pnpm install
+popd
+echo 'done'
+echo '----'
 
-# echo ''
-# echo 'Creating Vue project'
-# echo '===================='
-# if [ $npmenv = 'pnpm' ]
-# then
+echo ''
+echo 'Creating Vue project'
+echo '===================='
+if [ $npmenv = 'pnpm' ]
+then
 #     pnpm create vite --template vue-ts sb-vue
-#     pushd sb-vue
-#     pnpm install
-# elif $npmenv = 'yarn'
-# then
+    pushd sb-vue
+    pnpm install
+elif $npmenv = 'yarn'
+then
 #     yarn create vite --template vue-ts sb-vue
-#     pushd sb-vue
-#     yarn set version berry
-#     yarn
-#     yarn dlx @yarnpkg/sdks vscode
-# fi
-# popd
-# echo 'done'
-# echo '----'
+    pushd sb-vue
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
 
 # # echo 'Creating Svelte project'
 # # echo '======================='
@@ -156,25 +156,25 @@ code sb-flt
 # echo 'done'
 # echo '----'
 
-# echo ''
-# echo 'Creating Svelte Kit project'
-# echo '==========================='
-# if [ $npmenv = 'pnpm' ]
+echo ''
+echo 'Creating Svelte Kit project'
+echo '==========================='
+if [ $npmenv = 'pnpm' ]
 # then
 #     pnpm create vite sb-svk
-#     pushd sb-svk
-#     pnpm install
-# elif [ $npmenv = 'yarn' ]
-# then
+    pushd sb-svk
+    pnpm install
+elif [ $npmenv = 'yarn' ]
+then
 #     yarn create vite sb-svk
-#     pushd sb-svk
-#     yarn set version berry
-#     yarn
-#     yarn dlx @yarnpkg/sdks vscode
-# fi
-# popd
-# echo 'done'
-# echo '----'
+    pushd sb-svk
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
 
 # echo ''
 # echo "Copying Sven's favicon.svg into project folders"
