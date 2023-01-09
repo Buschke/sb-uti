@@ -160,7 +160,7 @@ echo ''
 echo 'Creating Svelte Kit project'
 echo '==========================='
 if [ $npmenv = 'pnpm' ]
-# then
+then
 #     pnpm create vite sb-svk
     pushd sb-svk
     pnpm install
