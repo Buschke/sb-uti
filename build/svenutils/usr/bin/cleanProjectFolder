@@ -24,9 +24,9 @@ pushd ./6-Saturday
 trash sb-*
 popd
 
-# pushd ./7-Sunday
-# trash sb-*
-# popd
+pushd ./7-Sunday
+trash sb-*
+popd
 
 pushd ./1-Monday
 trash sb-*
