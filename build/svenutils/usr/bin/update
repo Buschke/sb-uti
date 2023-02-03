@@ -71,7 +71,7 @@ for part in $parts; do
     pnpm update -g ganache
     echo 'List installed node version:'
     echo '----------------------------\n'
-    nvm ls
+    # nvm ls
     # for item in $updatesequence_node; do
     #   echo '\n------------------------------\n'
     #   echo '\nNext step: '$item '\n'
