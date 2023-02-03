@@ -72,6 +72,10 @@ for part in $parts; do
       echo 'List installed node version:'
       echo '----------------------------\n'
       nvm ls
+      pnpm update -g pnpm
+      pnpm update -g @angular/cli
+      pnpm update -g firebase-tools
+      pnpm update -g ganache
     done
     ;;
   esac
