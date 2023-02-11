@@ -33,7 +33,6 @@ code sb.code-workspace
 # echo 'done'
 # echo '----'
 
-echo ''
 echo 'Cloning sb-uti'
 echo '=============='
 gh repo clone Buschke/sb-uti
