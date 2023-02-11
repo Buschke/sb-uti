@@ -18,7 +18,6 @@ fi
 # mkdir sb-cpp
 # mkdir sb-uti
 
-code sb.code-workspace
 # code sb-cpp
 
 # echo 'Creating CPP project'
@@ -39,6 +38,13 @@ gh repo clone Buschke/sb-uti
 echo 'done'
 echo '----'
 code sb-uti
+
+echo 'Cloning sb-flt'
+echo '=============='
+gh repo clone Buschke/sb-flt
+echo 'done'
+echo '----'
+code sb-flt
 
 echo ''
 echo 'Cloning sb-rct'
@@ -69,13 +75,14 @@ gh repo clone Buschke/sb-svk
 echo 'done'
 echo '----'
 echo ''
+code sb.code-workspace
 
-echo 'Cloning sb-flt'
+echo 'Cloning sb-pyt'
 echo '=============='
-gh repo clone Buschke/sb-flt
+gh repo clone Buschke/sb-pyt
 echo 'done'
 echo '----'
-code sb-flt
+code sb-pyt
 
 echo 'Creating React project'
 echo '======================'
