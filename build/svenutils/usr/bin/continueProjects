@@ -55,6 +55,14 @@ echo '----'
 echo ''
 
 echo ''
+echo 'Cloning sb-christkoenig-rct'
+echo '=============='
+gh repo clone Buschke/sb-christkoenig-rct
+echo 'done'
+echo '----'
+echo ''
+
+echo ''
 echo 'Cloning sb-ang'
 echo '=============='
 gh repo clone Buschke/sb-ang
@@ -95,6 +103,25 @@ elif [ $npmenv = 'yarn' ]
 then
 #     yarn create vite --template react-ts sb-rct
     pushd sb-rct
+    yarn set version berry
+    yarn
+    yarn dlx @yarnpkg/sdks vscode
+fi
+popd
+echo 'done'
+echo '----'
+
+echo 'Creating Christkoenig React project'
+echo '==================================='
+if [ $npmenv = 'pnpm' ]
+then
+    # pnpm create vite --template react-ts sb-rct
+    pushd sb-christkoenig-rct
+    pnpm install
+elif [ $npmenv = 'yarn' ]
+then
+#     yarn create vite --template react-ts sb-rct
+    pushd sb-christkoenig-rct
     yarn set version berry
     yarn
     yarn dlx @yarnpkg/sdks vscode
