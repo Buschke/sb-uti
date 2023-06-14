@@ -16,3 +16,24 @@ do
   fi
   popd > /dev/null
 done
+
+for dir in $(find . -type d -name '.git')
+do
+  dir=${dir%/*}
+  pushd "$dir" > /dev/null
+  git fetch > /dev/null 2>&1
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null)
+  local=$(git rev-parse @ 2> /dev/null)
+  remote=$(git rev-parse "$upstream" 2> /dev/null)
+  base=$(git merge-base @ "$upstream" 2> /dev/null)
+  if [[ $local = $remote ]]; then
+    # echo "Up-to-date in $dir"
+  elif [[ $local = $base ]]; then
+    echo "Need to pull in $dir"
+  elif [[ $remote = $base ]]; then
+    echo "Need to push in $dir"
+  else
+    echo "Diverged in $dir"
+  fi
+  popd > /dev/null
+done
