@@ -92,6 +92,13 @@ echo 'done'
 echo '----'
 code sb-pyt
 
+echo 'Cloning sb-aki'
+echo '=============='
+gh repo clone Buschke/sb-aki
+echo 'done'
+echo '----'
+code sb-aki
+
 echo 'Creating React project'
 echo '======================'
 if [ $npmenv = 'pnpm' ]
