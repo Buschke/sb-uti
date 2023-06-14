@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+# Check if there are any uncommitted changes in the current git repository.
+# If there are, print a warning and exit with a non-zero exit code.
+
+# This script is intended to be used in the build process of the svenutils
+
+for dir in $(find . -type d -name '.git')
+do
+  dir=${dir%/*}
+  pushd "$dir" > /dev/null
+  changes=$(git status --porcelain)
+  if [[ -n $changes ]]; then
+    echo "Changes in $dir:"
+    echo "$changes"
+  fi
+  popd > /dev/null
+done
