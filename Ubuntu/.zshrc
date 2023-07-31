@@ -162,3 +162,18 @@ fi
 # export PATH="$PATH:/usr/lib/dart/bin"
 
 export PATH="$PATH:/home/sven/.local/share/Android/Sdk/platform-tools/"
+
+alias fl="flutter"
+
+function flb() {
+    flutter build "$@"
+}
+
+function flr() {
+    flutter run "$@"
+}
+
+function flc() {
+    flutter create -e --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge"  "$@"
+}
+
