@@ -177,6 +177,39 @@ function flc() {
     flutter create -e --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge"  "$@"
 }
 
+
+
+if ! mountpoint -q /mnt/wsl; then
+    sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
+fi
+
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t default || tmux new -s default
+# fi
+
+#if [ -n "$PS1" ] && [ -t 0 ]; then
+#    tmux
+#fi
+
+#export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/bin/java"export PATH="$PATH:/usr/lib/dart/bin"
+# export PATH="$PATH:/usr/lib/dart/bin"
+
+export PATH="$PATH:/home/sven/.local/share/Android/Sdk/platform-tools/"
+
+alias fl="flutter"
+
+function flb() {
+    flutter build "$@"
+}
+
+function flr() {
+    flutter run "$@"
+}
+
+function flc() {
+    flutter create -e --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge"  "$@"
+}
+
 function flcs() {
     sample_name=$1
     project_name=$2
