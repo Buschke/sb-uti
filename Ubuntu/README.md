@@ -1,4 +1,4 @@
 # Outline
 Log-Eintrag:
-.zshrc geändert
+.zshrc geändert:
 neues Flutter-Alias
