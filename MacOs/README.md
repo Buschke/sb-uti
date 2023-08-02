@@ -1,4 +1,4 @@
 # Outline
 Start
-Mittwoch
+Dienstag
 Enddatum heute
