@@ -94,9 +94,9 @@ alias l='ls -CF'
 alias g='git'
 
 hash -d md=~/Documents/myDev
-hash -d dc=/media/sven/Windows/Users/sven/Documents/myDev/DailyChallenges
+hash -d dc=/Users/sven/Documents/myDev/DailyChallenge
 hash -d dcl=~/Documents/myDev/DailyChallenge
-hash -d sm=/media/sven/Windows/Users/sven/Documents/myDev/sheet-music
+hash -d sm=/Users/sven/Documents/myDev/sheet-music
 
 export DEFAULT_PYTHON_VENV=svenAIvenv
 hash -d venv=~/.local/share/virtualenvs
@@ -119,20 +119,20 @@ export DEBFULLNAME="Sven Buschke"
 eval `keychain -q --agents ssh --eval id_ed25519`
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sven/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sven/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sven/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sven/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/sven/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/sven/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/sven/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/sven/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
-conda activate r
+# conda activate r
 # conda activate svenAI
 
 hash -d matlab=/home/sven/.local/share/MATLAB/R2018a/bin
@@ -146,9 +146,9 @@ function gal {
     git config --global alias.$1 $2
 }
 
-if ! mountpoint -q /mnt/wsl; then
-    sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
-fi
+# if ! mountpoint -q /mnt/wsl; then
+#     sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
+# fi
 
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 #     tmux attach -t default || tmux new -s default
@@ -179,9 +179,9 @@ function flc() {
 
 
 
-if ! mountpoint -q /mnt/wsl; then
-    sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
-fi
+# if ! mountpoint -q /mnt/wsl; then
+#     sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
+# fi
 
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 #     tmux attach -t default || tmux new -s default
@@ -215,4 +215,3 @@ function flcs() {
     project_name=$2
     flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
 }
-
