@@ -94,9 +94,9 @@ alias l='ls -CF'
 alias g='git'
 
 hash -d md=~/Documents/myDev
-hash -d dc=/media/sven/Windows/Users/sven/Documents/myDev/DailyChallenges
+hash -d dc=/Users/sven/Documents/myDev/DailyChallenge
 hash -d dcl=~/Documents/myDev/DailyChallenge
-hash -d sm=/media/sven/Windows/Users/sven/Documents/myDev/sheet-music
+hash -d sm=/Users/sven/Documents/myDev/sheet-music
 
 export DEFAULT_PYTHON_VENV=svenAIvenv
 hash -d venv=~/.local/share/virtualenvs
@@ -215,4 +215,3 @@ function flcs() {
     project_name=$2
     flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
 }
-
