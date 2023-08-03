@@ -163,22 +163,6 @@ fi
 
 export PATH="$PATH:/home/sven/.local/share/Android/Sdk/platform-tools/"
 
-alias fl="flutter"
-
-function flb() {
-    flutter build "$@"
-}
-
-function flr() {
-    flutter run "$@"
-}
-
-function flc() {
-    flutter create -e --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge"  "$@"
-}
-
-
-
 if ! mountpoint -q /mnt/wsl; then
     sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
 fi
