@@ -88,6 +88,11 @@ else
     fi
 fi
 unset __conda_setup
+
+export DEBEMAIL="sven@buschke.com"
+export DEBFULLNAME="Sven Buschke"
+eval `keychain -q --agents ssh --eval id_ed25519`
+
 # <<< conda initialize <<<
 
 # some more ls aliases
@@ -114,3 +119,25 @@ export PATH=~/.local/share/bin:$PATH
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+alias fl="flutter"
+
+function flb() {
+    flutter build "$@"
+}
+
+function flr() {
+    flutter run "$@"
+}
+
+function flc() {
+    flutter create -e --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge"  "$@"
+}
+
+function flcs() {
+    sample_name=$1
+    project_name=$2
+    flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
+}
+
+
