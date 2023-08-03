@@ -177,5 +177,3 @@ function flcs() {
     project_name=$2
     flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
 }
-
-
