@@ -8,23 +8,29 @@ fi
 # The following lines were added by compinstall
 
 zstyle ':completion:*' add-space true
+zstyle ':completion:*' auto-description 'Spezifiziere %d'
 zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate _prefix
-zstyle ':completion:*' completions 2
+zstyle ':completion:*' completions 1
 zstyle ':completion:*' condition 1
 zstyle ':completion:*' expand prefix suffix
-zstyle ':completion:*' glob 2
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' format 'Vervollständigt %d'
+zstyle ':completion:*' glob 1
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' ignore-parents parent pwd .. directory
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s, %l Matches insgesamt'
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' match-original both
-zstyle ':completion:*' max-errors 2
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' matcher-list '+' '+m:{[:lower:]}={[:upper:]} r:|[._-]=** r:|=**' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**' '+l:|=* r:|=*'
+zstyle ':completion:*' max-errors 5 numeric
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' original true
+zstyle ':completion:*' prompt '%e Fehler korrigiert:'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s von %l Matches'
 zstyle ':completion:*' special-dirs true
-zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*' substitute 2
-zstyle ':completion:*' use-compctl true
+zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
-zstyle ':completion:*' word true
 zstyle :compinstall filename '/home/sven/.zshrc'
 
 autoload -Uz compinit
@@ -32,8 +38,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=9999
-SAVEHIST=9999
+HISTSIZE=1000
+SAVEHIST=1000
 setopt autocd extendedglob notify
 unsetopt beep nomatch
 bindkey -v
@@ -62,6 +68,7 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+# Installiere PowerLevel10K
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -75,25 +82,25 @@ export NVM_DIR="$HOME/.nvm"
 export PNPM_HOME="/home/sven/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sven/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sven/.local/share/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sven/.local/share/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sven/.local/share/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/sven/.local/share/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/sven/.local/share/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/sven/.local/share/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/sven/.local/share/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
 
 export DEBEMAIL="sven@buschke.com"
 export DEBFULLNAME="Sven Buschke"
 eval `keychain -q --agents ssh --eval id_ed25519`
-
-# <<< conda initialize <<<
 
 # some more ls aliases
 alias ls='ls --color=auto'
@@ -112,7 +119,7 @@ conda activate $DEFAULT_PYTHON_CONDA
 hash -d venv=~/.local/share/virtualenvs
 export WORKON_HOME=~venv
 export PROJECT_HOME=~md
-source ~venv/$DEFAULT_PYTHON_VENV/bin/activate  # commented out by conda initialize  # commented out by conda initialize
+source ~venv/$DEFAULT_PYTHON_VENV/bin/activate
 
 export PATH=~/.local/share/bin:$PATH
 # source $WORKON_HOME/svenAIvenv/bin/virtualenvwrapper.sh
