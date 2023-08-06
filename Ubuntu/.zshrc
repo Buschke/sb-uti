@@ -5,29 +5,31 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
 # The following lines were added by compinstall
 
-
 zstyle ':completion:*' add-space true
+zstyle ':completion:*' auto-description 'Spezifiziere %d'
 zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate _prefix
-zstyle ':completion:*' completions 2
+zstyle ':completion:*' completions 1
 zstyle ':completion:*' condition 1
 zstyle ':completion:*' expand prefix suffix
-zstyle ':completion:*' glob 2
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' format 'Vervollständigt %d'
+zstyle ':completion:*' glob 1
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*' insert-unambiguous true
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s, %l Matches insgesamt'
 zstyle ':completion:*' list-suffixes true
-# zstyle ':completion:*' matcher-list '+' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' # commented out, too complex
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # simple case insensitive tab completion
 zstyle ':completion:*' match-original both
-zstyle ':completion:*' max-errors 3 not-numeric
+zstyle ':completion:*' matcher-list '+' '+m:{[:lower:]}={[:upper:]} r:|[._-]=** r:|=**' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**' '+l:|=* r:|=*'
+zstyle ':completion:*' max-errors 5 numeric
 zstyle ':completion:*' menu select=1
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' original true
+zstyle ':completion:*' prompt '%e Fehler korrigiert:'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s von %l Matches'
 zstyle ':completion:*' special-dirs true
-zstyle ':completion:*' substitute 2
+zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/sven/.zshrc'
 
@@ -40,7 +42,7 @@ HISTSIZE=9999
 SAVEHIST=9999
 setopt autocd extendedglob notify
 unsetopt beep nomatch
-bindkey -e
+bindkey -v
 # End of lines configured by zsh-newuser-install
 
 ### Added by Zinit's installer
@@ -66,6 +68,7 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+# Installiere PowerLevel10K
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -178,5 +181,3 @@ function flcs() {
     project_name=$2
     flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
 }
-
-
