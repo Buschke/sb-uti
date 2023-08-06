@@ -148,6 +148,8 @@ function gal {
     git config --global alias.$1 $2
 }
 
+alias gmWsl = "sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda"
+
 # if ! mountpoint -q /mnt/wsl; then
 #     sudo guestmount --add /media/sven/Windows/Users/sven/AppData/Local/Packages/CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc/LocalState/ext4.vhdx -o uid=1000 -o gid=1000 -o allow_other --rw /mnt/wsl -m /dev/sda
 # fi
@@ -179,5 +181,3 @@ function flc() {
 function flcs() {
     sample_name=$1
     project_name=$2
-    flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
-}
