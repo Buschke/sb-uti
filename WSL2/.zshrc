@@ -74,6 +74,21 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# eval "$(oh-my-posh init zsh)"
+# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/jandedobbeleer.omp.json)"
+# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/atomic.omp.json)"
+
+# zinit snippet https://github.com/lukechilds/zsh-nvm
+
+# . $HOME/.asdf/asdf.sh
+# zinit wait'0' lucid as'null' atinit'source $HOME/.asdf/asdf.sh' light-mode for zdharma-continuum/null
+zinit load asdf-vm/asdf
+
+# export PATH="$HOME/.asdf/shims:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -109,20 +124,36 @@ alias la='ls -A'
 alias l='ls -CF'
 alias g=git
 
+# alias pnpm='corepack pnpm'
+# alias yarn='corepack yarn'
+
 hash -d md=~/Documents/myDev
 hash -d dc=~/Documents/myDev/DailyChallenge
-hash -d dcwin=/mnt/c/Users/sven/Documents/myDev/DailyChallenges
+hash -d dcwin=/mnt/c/Users/sven/Documents/myDev/DailyChallenge
 
-export DEFAULT_PYTHON_CONDA=svenR
+export PATH=~/.local/share/miniconda3/bin:$PATH
+export DEFAULT_R_CONDA=svenR
 export DEFAULT_PYTHON_VENV=svenAIvenv
-conda activate $DEFAULT_PYTHON_CONDA
+# conda activate $DEFAULT_R_CONDA
 hash -d venv=~/.local/share/virtualenvs
 export WORKON_HOME=~venv
 export PROJECT_HOME=~md
-source ~venv/$DEFAULT_PYTHON_VENV/bin/activate
+source ~venv/$DEFAULT_PYTHON_VENV/bin/activate  # commented out by conda initialize  # commented out by conda initialize
 
 export PATH=~/.local/share/bin:$PATH
 # source $WORKON_HOME/svenAIvenv/bin/virtualenvwrapper.sh
+
+# fnm
+# export PATH="/home/sven/.local/share/fnm:$PATH"
+# eval "`fnm env`"
+
+zinit ice from'gh-r' sbin'fnm' nocompile \
+    atclone"./fnm env --use-on-cd > fnmenv.zsh;./fnm completions --shell zsh > _fnm.zsh" \
+    atpull"%atclone" \
+    multisrc"*.zsh"
+zinit light Schniz/fnm
+
+eval "$(fnm env --use-on-cd)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
