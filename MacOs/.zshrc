@@ -194,7 +194,7 @@ function flc() {
 #export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/bin/java"export PATH="$PATH:/usr/lib/dart/bin"
 # export PATH="$PATH:/usr/lib/dart/bin"
 
-export PATH="$PATH:/home/sven/.local/share/Android/Sdk/platform-tools/"
+export PATH="$PATH:/Users/sven/Library/Android/sdk/platform-tools/"
 
 alias fl="flutter"
 
@@ -214,4 +214,4 @@ function flcs() {
     sample_name=$1
     project_name=$2
     flutter create --sample $sample_name --org com.buschke --description "A new Flutter project by SvenSoft & BuscByte Innovation Forge" $project_name
-}
+}}
