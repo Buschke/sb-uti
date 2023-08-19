@@ -123,6 +123,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias g=git
+alias ci=code-insiders
+alias code=ci
 
 # alias pnpm='corepack pnpm'
 # alias yarn='corepack yarn'
@@ -157,3 +159,8 @@ eval "$(fnm env --use-on-cd)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+# [ -f "/home/sven/.ghcup/env" ] && source "/home/sven/.ghcup/env" # ghcup-env
+
+# export PATH=/home/sven/Downloads/swift-5.8.1-RELEASE-ubuntu22.04/usr/bin:$PATH
+
+# export PYTHONPATH=$PYTHONPATH:$HOME/.local/svenAIvenv/lib/python3.11/site-packages
