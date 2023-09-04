@@ -164,3 +164,17 @@ source <(ng completion script)
 # export PATH=/home/sven/Downloads/swift-5.8.1-RELEASE-ubuntu22.04/usr/bin:$PATH
 
 # export PYTHONPATH=$PYTHONPATH:$HOME/.local/svenAIvenv/lib/python3.11/site-packages
+
+zinit light zsh-users/zsh-completions
+
+# Load zsh completions
+autoload -U compinit
+compinit
+
+autoload -U +X bashcompinit && bashcompinit
+autoload -U +X compinit && compinit
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
